@@ -1,0 +1,15 @@
+{
+  "name": "post-compile-webpack-plugin",
+  "version": "0.1.0",
+  "description": "Kick off another webpack compilation after the main one has finished",
+  "main": "index.js",
+  "repository": "https://github.com/jpommerening/post-compile-webpack-plugin.git",
+  "author": "Jonas Pommerening <jonas.pommerening@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "webpack": "^2.5.1"
+  },
+  "dependencies": {
+    "memory-fs": "^0.4.1"
+  }
+}
