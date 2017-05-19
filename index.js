@@ -19,10 +19,11 @@ class PostCompilePlugin {
       });
       compilation.plugin('additional-assets', callback => {
         if (compiled) {
-          compiled = false;
           Object.keys(assets).forEach(filename => {
             compilation.assets[filename] = assets[filename];
           });
+          compiled = false;
+          assets = null;
           callback();
           return;
         }
