@@ -12,7 +12,21 @@ class PostCompilePlugin {
 
   apply(compiler) {
     compiler.plugin('this-compilation', compilation => {
+      let compiled = false;
+      let assets;
+      compilation.plugin('need-additional-seal', () => {
+        return compiled;
+      });
       compilation.plugin('additional-assets', callback => {
+        if (compiled) {
+          compiled = false;
+          Object.keys(assets).forEach(filename => {
+            compilation.assets[filename] = assets[filename];
+          });
+          callback();
+          return;
+        }
+
         const fs = new MemoryFS();
         const compiler = this.createChildCompiler(compilation, fs);
         const outputPath = compilation.compiler.outputPath;
@@ -24,7 +38,11 @@ class PostCompilePlugin {
           fs.writeFileSync(filepath, asset.source());
         });
 
-        compiler.runAsChild(callback);
+        compiler.runAsChild((err, entries, compilation) => {
+          compiled = true;
+          assets = compilation.assets;
+          callback(err);
+        });
       });
     });
   }
