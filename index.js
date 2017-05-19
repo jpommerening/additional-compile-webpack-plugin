@@ -49,7 +49,7 @@ class PostCompilePlugin {
       childCompiler.applyPluginsBailResult('entry-option', options.context, options.entry);
     }
 
-    childCompiler.plugin('emit', (compilation, callback) => {
+    childCompiler.plugin('after-compile', (compilation, callback) => {
       compilation.fileDependencies = compilation.fileDependencies.filter(notInOutput);
       compilation.contextDependencies = compilation.contextDependencies.filter(notInOutput);
       compilation.missingDependencies = compilation.missingDependencies.filter(notInOutput);
