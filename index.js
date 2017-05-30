@@ -5,7 +5,7 @@ const path = require( 'path' );
 const MemoryFS = require( 'memory-fs' );
 const OverlayInputFS = require( './lib/overlay-input-fs' );
 
-class PostCompilePlugin {
+class AdditionalCompilePlugin {
   constructor(options) {
     this.options = options;
   }
@@ -51,7 +51,7 @@ class PostCompilePlugin {
   createChildCompiler(compilation, fs) {
     const options = this.options;
     const compiler = compilation.compiler;
-    const childCompiler = compilation.createChildCompiler('post-compile-webpack-plugin', options.output);
+    const childCompiler = compilation.createChildCompiler('additional-compile-webpack-plugin', options.output);
     const notInOutput = filename => !fs.existsSync(filename);
 
     childCompiler.inputFileSystem = new OverlayInputFS(fs, compiler.inputFileSystem);
@@ -79,4 +79,4 @@ class PostCompilePlugin {
   }
 }
 
-module.exports = PostCompilePlugin;
+module.exports = AdditionalCompilePlugin;
