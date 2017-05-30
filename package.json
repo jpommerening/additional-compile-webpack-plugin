@@ -1,5 +1,5 @@
 {
-  "name": "post-compile-webpack-plugin",
+  "name": "additional-compile-webpack-plugin",
   "version": "0.1.0",
   "description": "Kick off another webpack compilation after the main one has finished",
   "main": "index.js",

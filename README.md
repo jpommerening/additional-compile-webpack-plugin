@@ -1,7 +1,7 @@
 # post-compile-webpack-plugin
 
 > Yo dawg!
-> I put a compiler in your compiler, so you can compile while you compile!
+> I put a compiler in your compiler, so you can compile ~while~ _after_ you compile!
 
 This plugin enables you to start another compile step with access to the
 output of the main compilation.
