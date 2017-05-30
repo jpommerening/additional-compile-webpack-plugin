@@ -1,4 +1,4 @@
-# post-compile-webpack-plugin
+# additional-compile-webpack-plugin
 
 > Yo dawg!
 > I put a compiler in your compiler, so you can compile ~while~ _after_ you compile!
@@ -19,7 +19,7 @@ that, the child compilation inherits the configuration of the main compilation.
 Example:
 
 ```js
-const PostCompilePlugin = require( 'post-compile-webpack-plugin' );
+const AdditionalCompilePlugin = require( 'additional-compile-webpack-plugin' );
 const path = require( 'path' );
 
 module.exports = {
